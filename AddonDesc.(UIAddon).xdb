@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UIAddon>
+	<AutoStart>true</AutoStart>
+	<Name>AutoAccept4</Name>
+	<ScriptFileRefs>
+		<Item href="AA4.lua"/>
+	</ScriptFileRefs>
+	<author>Anon</author>
+	<revision>4</revision>
+	<update>2017-06-06 00:00:00</update>
+	<addon_name>AutoAccept4</addon_name>
+</UIAddon>
