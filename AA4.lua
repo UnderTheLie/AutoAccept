@@ -1,10 +1,10 @@
-Global( "CurrencyLimit", 100 )
+Global( "CurrencyLimit", 299 )
 Global( "Whishlist", {
 	{ "Экстракт мастерства", 0 },
 	{ "Экстракт стойкости", 0 },
 	{ "Острая рыбка", 0 },
 	{ "Горькая настойка", 0 },
-	{ "Маленький символ золота", 0 },
+	{ "Маленький символ золота", 50 },
 	{ "Отличные инструменты", 0 },
 	{ "Эссенция судеб", 0 }
 } )
@@ -34,6 +34,7 @@ function OnVendorListUpdated ( params )
 						if userMods.FromWString(currency:GetInfo().name)=="Эмблема Поединка" and avatar.GetCurrencyValue(currency).value>CurrencyLimit then 
 							avatar.Buy(itemId, 1)
 							avatar.StopInteract()
+							common.RegisterEventHandler(OnCurrencyLimitReached, "EVENT_SECOND_TIMER")
 							return
 						end
 					end
