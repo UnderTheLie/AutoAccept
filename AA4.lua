@@ -1,4 +1,4 @@
-Global( "CurrencyLimit", 299 )
+Global( "CurrencyLimit", 99 )
 Global( "Whishlist", {
 	{ "Экстракт мастерства", 0 },
 	{ "Экстракт стойкости", 0 },
@@ -58,7 +58,7 @@ end
 function OnCurrencyLimitReached ( params )
 	local units = avatar.GetUnitList()
 	for key, value in pairs(units) do
-		if object.GetName(value)=="Гээл-Бран Хмурый" then
+		if userMods.FromWString(object.GetName(value))=="Гээл-Бран Хмурый" then
 			avatar.StartInteract(value)
 			return
 		end
@@ -67,7 +67,7 @@ end
 
 
 function OnCurrencyValueChanged ( params )
-	if (userMods.FromWString(params.id:GetInfo().name)=="Эмблема Поединка") and avatar.GetCurrencyValue(params.id).value>CurrencyLimit then
+	if userMods.FromWString(params.id:GetInfo().name)=="Эмблема Поединка" and avatar.GetCurrencyValue(params.id).value>CurrencyLimit then
 		common.RegisterEventHandler(OnCurrencyLimitReached, "EVENT_SECOND_TIMER")
 	end
 end
